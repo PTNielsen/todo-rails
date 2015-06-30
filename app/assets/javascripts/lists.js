@@ -33,14 +33,24 @@ $(document).on("ready", function(){
         },
         error: errorHandler,
         success: function(data) {
-          var new_item = $("<li class='task' data-task-id='" + data.id + "'>" + data.content + "</li>")
-
+          var new_item = $("<li class='task' data-task-id='" + data.id + "'>" + data.content + "<button>Delete</button></li>")
           new_item.on("click", taskClickHandler)
 
           $("ul.task-list").append(new_item)
+          // $(#{list_id}).val("")
         }
       })
     }
   })
 
+  // $("button").click(function() {
+  //   var task_id = $(this).data("id");
+
+  //   $.ajax("/lists/" + list_id + "/tasks/" + task_id)
+  //       method: "DELETE",
+  //       data: {
+  //           task_id: $(this).val();
+  //       }
+  // });
+  // });
 })
