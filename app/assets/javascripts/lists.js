@@ -37,20 +37,20 @@ $(document).on("ready", function(){
           new_item.on("click", taskClickHandler)
 
           $("ul.task-list").append(new_item)
-          // $(#{list_id}).val("")
+          $("input").val("")
         }
       })
     }
   })
+  
+  $("ul").on("click", "button", function(e) {
+    var list_id = $("input").data("list-id")
+    var task_id = $(this).parent().data("task-id")
 
-  // $("button").click(function() {
-  //   var task_id = $(this).data("id");
-
-  //   $.ajax("/lists/" + list_id + "/tasks/" + task_id)
-  //       method: "DELETE",
-  //       data: {
-  //           task_id: $(this).val();
-  //       }
-  // });
-  // });
+    $.ajax("/lists/" + list_id + "/tasks/" + task_id, {
+      method: "DELETE",
+      error: errorHandler,
+      success: $(this).parent().remove()
+    })
+  })
 })
