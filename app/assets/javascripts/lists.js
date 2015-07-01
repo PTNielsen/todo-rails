@@ -46,11 +46,14 @@ $(document).on("ready", function(){
   $("ul").on("click", "button", function(e) {
     var list_id = $("input").data("list-id")
     var task_id = $(this).parent().data("task-id")
+    var $button = $(this)
 
     $.ajax("/lists/" + list_id + "/tasks/" + task_id, {
       method: "DELETE",
       error: errorHandler,
-      success: $(this).parent().remove()
+      success: function() {
+        $button.parent().remove()
+      }
     })
   })
 })
