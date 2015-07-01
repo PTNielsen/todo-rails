@@ -7,7 +7,7 @@ class TasksController < ApplicationController
 
   def create
     # Task.new(content: params[:task_name], list_id: params[:list_id])
-    list = List.find params[:list_id]
+    list = current_user.lists.find params[:list_id]
     task = list.tasks.create! content: params[:task_name]
     render json: task
   end

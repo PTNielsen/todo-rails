@@ -42,7 +42,7 @@ $(document).on("ready", function(){
       })
     }
   })
-  
+
   $("ul").on("click", "button", function(e) {
     var list_id = $("input").data("list-id")
     var task_id = $(this).parent().data("task-id")
